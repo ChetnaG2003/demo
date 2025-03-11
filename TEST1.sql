@@ -20,14 +20,14 @@ dept_name varchar
 -- TRUNCATE: IT DELETE ALL ROWS BUT TABLE STRUCTURE REMAINS
 
 -- 4.NUMERIC DATATYPE
--- SMALLINT: Range: -32,768 to 32,767
--- INTEGER or INT: Range: -2,147,483,648 to 2,147,483,647
--- BIGINT: Range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
--- SERIAL: Range: Typically, from 1 to 2,147,483,647.
--- BIGSERIAL: Typically, from 1 to 9,223,372,036,854,775,807.
--- REAL: Approximately 6-7 decimal digits of precision.
--- DOUBLE PRECISION: Approximately 15-16 decimal digits of precision.
--- NUMERIC or DECIMAL: NUMERIC(10, 2)
+-- SMALLINT
+-- INTEGER 
+-- BIGINT
+-- SERIAL
+-- BIGSERIAL
+-- REAL
+-- DOUBLE PRECISION
+-- NUMERIC or DECIMAL
  
 -- STRING DATAtype:
 -- CHAR(n):Fixed-length string (padded with spaces)	
@@ -42,19 +42,23 @@ dept_name varchar
  
 
 SECTION B
-1.
-select salary, salary * 1.10 as new_salary from employees
-2.
-select * from employees where hire_date < '2022-01-01'
-3.
-select *from employees where salary between 50000 and 80000
-4.
-select* from employees where first_name like 'J%'
  
--- 5 returning clause: The returning clause is used with INSERT, UPDATE, and DELETE statements to return values from
-the  rows without so no need of another query to retrive data we can use(returning*)for entire record or 
-(returning column name) for specific columns
-ex: insert into tablename values()returning*
+1.copy employees from 'A:/employees.csv' delimiter ',' csv header
+ copy departments from 'A:/departments.csv' delimiter ',' csv header
+ 
+2.update employees set salary=1.1 *salary; 
+
+3.select * from employees where hire_date < '2022-01-01'
+
+4.select *from employees where salary between 50000 and 80000
+
+5.select* from employees where first_name like 'J%'
+ 
+ 
+ 6.-- returning clause: The returning clause is used with INSERT, UPDATE, and DELETE statements to return values from
+-- the  rows without so no need of another query to retrive data we can use(returning*)for entire record or 
+-- (returning column name) for specific columns
+-- ex: insert into tablename values()returning*
 
 
 
