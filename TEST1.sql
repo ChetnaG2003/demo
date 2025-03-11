@@ -1,6 +1,6 @@
 SECTION A
 1. create table employees(
-employee_id int,
+employee_id int primary key,
 first_name varchar,
 last_name varchar,
 salary decimal,
@@ -8,10 +8,10 @@ hire_date date,
 dept_id int
 )
 
-copy employees from 'A:/employees.csv' delimiter ',' csv header
+
 2.
 create table departments(
-dept_id int,
+dept_id int primary key,
 dept_name varchar
 )
 -- 3.DIFFERECNCE
