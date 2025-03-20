@@ -1,6 +1,6 @@
 SECTION A
 1. create table employees(
-employee_id int,
+employee_id int primary key,
 first_name varchar,
 last_name varchar,
 salary decimal,
@@ -8,51 +8,57 @@ hire_date date,
 dept_id int
 )
 
-copy employees from 'A:/employees.csv' delimiter ',' csv header
+
 2.
 create table departments(
-dept_id int,
+dept_id int primary key,
 dept_name varchar
 )
-3.DIFFERECNCE
-DROP: REMOVE ENTIRE TABLE INCLUDING TABLE STRUCTURE 
-DELETE :CAN DELETE SPECIFIC ROWS ACCORDING TO CONDITIONS OR CAN DELTE TABLE ALSO
-TRUNCATE: IT DELETE ALL ROWS BUT TABLE STRUCTURE REMAINS
+-- 3.DIFFERECNCE
+-- DROP: REMOVE ENTIRE TABLE INCLUDING TABLE STRUCTURE 
+-- DELETE :CAN DELETE SPECIFIC ROWS ACCORDING TO CONDITIONS OR CAN DELTE TABLE ALSO
+-- TRUNCATE: IT DELETE ALL ROWS BUT TABLE STRUCTURE REMAINS
 
-4.NUMERIC DATATYPE
-SMALLINT: Range: -32,768 to 32,767
-INTEGER or INT: Range: -2,147,483,648 to 2,147,483,647
-BIGINT: Range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
-SERIAL: Range: Typically, from 1 to 2,147,483,647.
-BIGSERIAL: Typically, from 1 to 9,223,372,036,854,775,807.
-REAL: Approximately 6-7 decimal digits of precision.
-DOUBLE PRECISION: Approximately 15-16 decimal digits of precision.
-NUMERIC or DECIMAL: NUMERIC(10, 2)
-STRING DATAtype:
-CHAR(n):Fixed-length string (padded with spaces)	
-VARCHAR(n):	Variable-length string (max n characters)	
-TEXT:Stores unlimited-length text 
+-- 4.NUMERIC DATATYPE
+-- SMALLINT
+-- INTEGER 
+-- BIGINT
+-- SERIAL
+-- BIGSERIAL
+-- REAL
+-- DOUBLE PRECISION
+-- NUMERIC or DECIMAL
+ 
+-- STRING DATAtype:
+-- CHAR(n):Fixed-length string (padded with spaces)	
+-- VARCHAR(n):	Variable-length string (max n characters)	
+-- TEXT:Stores unlimited-length text 
 
-5. difference between varchar,text and char
-varchar(n):variable length string with a max length we can give limit to input size
-text: variable length string with unlimited size we can insert till any limit
-char(n):variable lenth string with fixed size use when values have a fixed length
+-- 5. difference between varchar,text and char
+-- varchar(n):variable length string with a max length we can give limit to input size
+-- text: variable length string with unlimited size we can insert till any limit
+-- char(n):variable lenth string with fixed size use when values have a fixed length
 
  
 
 SECTION B
-1.
-select salary, salary * 1.10 as new_salary from employees
-2.
-select * from employees where hire_date < '2022-01-01'
-3.
-select *from employees where salary between 50000 and 80000
-4.
-select* from employees where first_name like 'J%'
-5 returning clause: The returning clause is used with INSERT, UPDATE, and DELETE statements to return values from
-the  rows without so no need of another query to retrive data we can use(returning*)for entire record or 
-(returning column name) for specific columns
-ex: insert into tablename values()returning*
+ 
+1.copy employees from 'A:/employees.csv' delimiter ',' csv header
+ copy departments from 'A:/departments.csv' delimiter ',' csv header
+ 
+2.update employees set salary=1.1 *salary; 
+
+3.select * from employees where hire_date < '2022-01-01'
+
+4.select *from employees where salary between 50000 and 80000
+
+5.select* from employees where first_name like 'J%'
+ 
+ 
+ 6.-- returning clause: The returning clause is used with INSERT, UPDATE, and DELETE statements to return values from
+-- the  rows without so no need of another query to retrive data we can use(returning*)for entire record or 
+-- (returning column name) for specific columns
+-- ex: insert into tablename values()returning*
 
 
 
@@ -114,19 +120,19 @@ except
 select e.employee_id, e.first_name, e.last_name, e.salary, e.hire_date, e.dept_id
 from employees e
 inner join departments d on e.dept_id = d.dept_id;
-4.
-UNION: IT REMOVES DUPLICATE 
-USE WHEN WE WANT ONLY UNIQUE ROWS
-EX:SELECT 'RAM','SHYAM','GEETA'FROM TABLENAME
-   UNION  
-   SELECT'RAM','VINOD','PREM' FROM TABLENAME
-   output return= shyam,geeta,vinod, prem
+-- 4.
+-- UNION: IT REMOVES DUPLICATE 
+-- USE WHEN WE WANT ONLY UNIQUE ROWS
+-- EX:SELECT 'RAM','SHYAM','GEETA'FROM TABLENAME
+   -- UNION  
+   -- SELECT'RAM','VINOD','PREM' FROM TABLENAME
+   -- output return= shyam,geeta,vinod, prem
 
-UNION ALL : IT INCLUDES DUPLICATE ROWS ALSO
-USE WHEN WE WANT ENTIRE RECORD INCLUDING DUPLICATES
-EX:SELECT 'RAM','SHYAM','GEETA'FROM TABLENAME
-   UNION  
-   SELECT'RAM','VINOD','PREM' FROM TABLENAME
-   output RETURN = RAM, SHAYM,GEETA ,RAM,vinod, prem
+-- UNION ALL : IT INCLUDES DUPLICATE ROWS ALSO
+-- USE WHEN WE WANT ENTIRE RECORD INCLUDING DUPLICATES
+-- EX:SELECT 'RAM','SHYAM','GEETA'FROM TABLENAME
+   -- UNION  
+   -- SELECT'RAM','VINOD','PREM' FROM TABLENAME
+   -- output RETURN = RAM, SHAYM,GEETA ,RAM,vinod, prem
 
 
